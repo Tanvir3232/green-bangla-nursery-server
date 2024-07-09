@@ -13,8 +13,13 @@ const getSingleProductFromDB = async (payload: string) => {
     const result = await Product.findById(payload);
     return result;
 }
+const deleteProductFromDB = async (payload: string) => {
+    const result = await Product.findByIdAndDelete(payload);
+    return result;
+}
 export const ProductServices = {
     addProductIntoDB,
     getAllProductsFromDB,
-    getSingleProductFromDB
+    getSingleProductFromDB,
+    deleteProductFromDB
 }
