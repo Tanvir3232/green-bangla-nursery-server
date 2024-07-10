@@ -23,6 +23,26 @@ const createProductValidationSchema = z.object({
         }).url("Image must be a valid URL"),
     })
 })
+
+const updateProductValidationSchema = z.object({
+    body: z.object({
+        category: z.enum(["Indoor", "Outdoor", "Medicinal", "Flowering", "Fruit"], {
+            invalid_type_error: "Invalid category",
+        }).optional(),
+        brand: z.string().optional(),
+        title: z.string().optional(),
+        price: z.number({
+            invalid_type_error: "Price must be a number",
+        }).positive("Price must be a positive number").optional(),
+        description: z.string().optional(),
+        rating: z.number({
+            invalid_type_error: "Rating must be a number",
+        }).min(0, "Rating cannot be less than 0")
+            .max(5, "Rating cannot be more than 5").optional(),
+        image: z.string().url("Image must be a valid URL").optional(),
+    })
+})
 export const ProductValidations = {
-    createProductValidationSchema
+    createProductValidationSchema,
+    updateProductValidationSchema
 }

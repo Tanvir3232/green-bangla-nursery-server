@@ -12,4 +12,9 @@ router.post(
 router.get("/", ProductControllers.getAllProducts);
 router.get("/:id", ProductControllers.getSingleProduct)
 router.delete("/:id", ProductControllers.deleteProduct);
+router.patch(
+    "/:id",
+    validateRequest(ProductValidations.updateProductValidationSchema),
+    ProductControllers.updateProduct
+)
 export const ProductRoutes = router;
