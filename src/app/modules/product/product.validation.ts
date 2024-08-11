@@ -6,7 +6,7 @@ const createProductValidationSchema = z.object({
             required_error: "Category is required",
             invalid_type_error: "Invalid category",
         }),
-        brand: z.string({ required_error: "brand is required" }),
+
         title: z.string({ required_error: "title is required" }),
         price: z.number({
             required_error: "price is required",
@@ -21,6 +21,10 @@ const createProductValidationSchema = z.object({
         image: z.string({
             required_error: "Image is required",
         }).url("Image must be a valid URL"),
+        stock: z.number({
+            required_error: "stock is required",
+            invalid_type_error: "stock must be a number",
+        }).min(0, "stock cannot be negative")
     })
 })
 
@@ -29,7 +33,7 @@ const updateProductValidationSchema = z.object({
         category: z.enum(["Indoor", "Outdoor", "Medicinal", "Flowering", "Fruit"], {
             invalid_type_error: "Invalid category",
         }).optional(),
-        brand: z.string().optional(),
+
         title: z.string().optional(),
         price: z.number({
             invalid_type_error: "Price must be a number",
@@ -40,6 +44,9 @@ const updateProductValidationSchema = z.object({
         }).min(0, "Rating cannot be less than 0")
             .max(5, "Rating cannot be more than 5").optional(),
         image: z.string().url("Image must be a valid URL").optional(),
+        stock: z.number({
+            invalid_type_error: "stock must be a number",
+        }).min(0, "stock cannot be negative").optional()
     })
 })
 export const ProductValidations = {

@@ -1,9 +1,9 @@
 export type TProduct = {
-    category: "Indoor" | "Outdoor" | "Medicinal" | "Flowering" | "Fruit"
-    brand: string;
+    category: "Indoor" | "Outdoor" | "Medicinal" | "Flowering" | "Fruit";
     title: string;
     price: number;
     description: string;
     rating: number;
-    image: string
+    image: string;
+    stock: number;
 }

@@ -28,13 +28,16 @@ const productSchema = new Schema<TProduct>({
         min: 0,
         max: 5
     },
-    brand: {
-        type: String,
-        required: true
-    },
     image: {
         type: String,
         required: true
+    },
+    stock: {
+        type: Number,
+        required: true,
+        min: 0
     }
+}, {
+    timestamps: true
 })
 export const Product = mongoose.model<TProduct>("Product", productSchema)
