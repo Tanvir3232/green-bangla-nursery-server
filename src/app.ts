@@ -10,7 +10,7 @@ const app: Application = express();
 app.use(express.json());
 
 
-app.use(cors({ origin: ['http://localhost:5173'], credentials: true }));
+app.use(cors({ origin: ['http://localhost:5173', 'https://green-bangla-nursery-client.vercel.app'], credentials: true }));
 // Application routes
 app.use('/api/', router);
 
